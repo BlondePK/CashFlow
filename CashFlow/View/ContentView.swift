@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var observed: Observed
     
+    
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea(.all)
@@ -20,7 +21,7 @@ struct ContentView: View {
             }
             
         }.sheet(isPresented: $observed.addTransactionSheet){
-            addExpenceSheetView()
+            addExpenceSheetView(addExpenceSheetVM: AddExpenceSheetVM())
         }
     }
 }
