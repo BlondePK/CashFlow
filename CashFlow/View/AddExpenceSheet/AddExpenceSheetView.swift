@@ -5,7 +5,6 @@
 //  Created by joakim simonsen on 15/11/2023.
 //
 
-//This is a test
 
 import SwiftUI
 
