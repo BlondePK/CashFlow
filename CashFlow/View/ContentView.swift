@@ -21,7 +21,7 @@ struct ContentView: View {
             }
             
         }.sheet(isPresented: $observed.addTransactionSheet){
-            addExpenceSheetView(addExpenceSheetVM: AddExpenceSheetVM())
+            addExpenceSheetView(addExpenceSheetVM: AddExpenceSheetVM(), categories: Categorys())
         }
     }
 }

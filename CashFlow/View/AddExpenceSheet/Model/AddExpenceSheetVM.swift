@@ -23,6 +23,7 @@ class AddExpenceSheetVM: ObservableObject{
     @Published var needLevelSelected: String = "Want"
     
     @Published var toggle: Bool = false
+    @Published var categorySheet: Bool = false 
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()

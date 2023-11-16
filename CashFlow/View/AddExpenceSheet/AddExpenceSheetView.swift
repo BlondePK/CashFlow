@@ -10,6 +10,7 @@ import SwiftUI
 
 struct addExpenceSheetView: View {
     @StateObject var addExpenceSheetVM: AddExpenceSheetVM
+    @StateObject var categories: Categorys
     
     @Environment(\.dismiss) var dismiss
     
@@ -125,18 +126,22 @@ struct addExpenceSheetView: View {
                     }
                     
                     //Category
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 7)
-                            .foregroundStyle(.secondaryText)
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .opacity(0.5)
-                        
-                        HStack{
-                            Text("Category")
-                                .font(.caption)
-                            Spacer()
-                            Image(systemName: "rectangle.stack")
-                        }.padding(10)
+                    Button{
+                        addExpenceSheetVM.categorySheet.toggle()
+                    }label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 7)
+                                .foregroundStyle(.secondaryText)
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                .opacity(0.5)
+                            
+                            HStack{
+                                Text("Category")
+                                    .font(.caption)
+                                Spacer()
+                                Image(systemName: "rectangle.stack")
+                            }.padding(10)
+                        }
                     }
                     
                     
@@ -191,10 +196,13 @@ struct addExpenceSheetView: View {
                     
                 }.padding()
                 .ignoresSafeArea(.keyboard)
+                .sheet(isPresented: $addExpenceSheetVM.categorySheet){
+                    categoriesView()
+                }
         }
     }
 }
 
 #Preview {
-    addExpenceSheetView(addExpenceSheetVM: AddExpenceSheetVM())
+    addExpenceSheetView(addExpenceSheetVM: AddExpenceSheetVM(), categories: Categorys())
 }

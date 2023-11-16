@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class Categorys: ObservableObject{
@@ -26,6 +27,19 @@ class Categorys: ObservableObject{
             self.colorInt = colorInt
         }
     }
+    
+    func combineAllCategories(){
+        AllCatgegories.append(Miscellaneus)
+        AllCatgegories.append(Entertainment)
+        AllCatgegories.append(FoodAndDringks)
+        AllCatgegories.append(Housing)
+        AllCatgegories.append(Income)
+        AllCatgegories.append(LifeStyle)
+        AllCatgegories.append(Savings)
+        AllCatgegories.append(Transportation)
+    }
+    
+    @Published var CategoryColors: [Color] = [Color.gray, Color.pink, Color.blue, Color.orange, Color.green, Color.red, Color.cyan, Color.purple]
     
     @Published var AllCatgegories: [[category]] = []
 
