@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ToolBarView: View {
-    @StateObject var toolBarViewModel: ToolBarViewModel
-    @ObservedObject var observed = Observed()
+    @StateObject var toolBarViewModel = ToolBarViewModel()
+    @ObservedObject var observed: Observed
     var body: some View {
         VStack{
             //DIVIDER

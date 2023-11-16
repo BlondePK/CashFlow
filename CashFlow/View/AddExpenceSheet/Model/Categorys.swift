@@ -39,7 +39,10 @@ class Categorys: ObservableObject{
         AllCatgegories.append(Transportation)
     }
     
-    @Published var CategoryColors: [Color] = [Color.gray, Color.pink, Color.blue, Color.orange, Color.green, Color.red, Color.cyan, Color.purple]
+    @Published var isCategorySelected: Bool = false 
+    @Published var categorySelected: category = category(mainCategory: "Miscellaneus", categoryName: "Miscellaneous", icon: "archivebox.fill",colorInt: 0)
+    
+    @Published var CategoryColors: [Color] = [Color.gray, Color.pink, Color.yellow, Color.blue, Color.green, Color.red, Color.primaryGreen, Color.purple]
     
     @Published var AllCatgegories: [[category]] = []
 

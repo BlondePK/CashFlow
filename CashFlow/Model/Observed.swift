@@ -6,7 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
+
+
+extension Font{
+    static var georgiaFont: Font{
+        Font.custom("Georgia", size: 20)
+    }
+}
 
 class Observed: ObservableObject{
-    @Published var addTransactionSheet: Bool = false 
+    @Published var addTransactionSheet: Bool = false
 }

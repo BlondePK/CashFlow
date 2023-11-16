@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var observed: Observed
+    @StateObject var observed = Observed()
     
     
     var body: some View {
@@ -17,10 +17,10 @@ struct ContentView: View {
             
             VStack{
                 Spacer()
-                ToolBarView(toolBarViewModel: ToolBarViewModel(), observed: observed)
+                ToolBarView(observed: observed)
             }
             
-        }.sheet(isPresented: $observed.addTransactionSheet){
+        }.fullScreenCover(isPresented: $observed.addTransactionSheet){
             addExpenceSheetView(addExpenceSheetVM: AddExpenceSheetVM(), categories: Categorys())
         }
     }

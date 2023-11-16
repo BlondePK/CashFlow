@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct addExpenceSheetView: View {
-    @StateObject var addExpenceSheetVM: AddExpenceSheetVM
-    @StateObject var categories: Categorys
+    @StateObject var addExpenceSheetVM = AddExpenceSheetVM()
+    @StateObject var categories = Categorys()
     
     @Environment(\.dismiss) var dismiss
     
@@ -23,112 +23,128 @@ struct addExpenceSheetView: View {
         ZStack{
             Color.background.ignoresSafeArea(.all)
             
-                VStack{
-                    
-                    //Dismiss and Top text
-                    ZStack{
-                        HStack{
-                            Button{
-                                dismiss()
-                            }label: {
-                                Image(systemName: "delete.left")
-                                    .foregroundStyle(.primaryText)
-                            }
-                            Spacer()
-                        }
-                        Text("New Transaction")
-                    }
-                    
-                    Spacer()
-                    
-                    //Amount
-                    ZStack{
-                        TextField("", value: $addExpenceSheetVM.amauntText, formatter: addExpenceSheetVM.numberFormatter)
-                            .focused($focusedField, equals: .amauntText)
-                            .keyboardType(.decimalPad)
-                            .opacity(0)
-                        
-                        HStack(alignment: .firstTextBaseline, spacing: 0){
-                            Text("\(addExpenceSheetVM.amauntText, specifier: "%.2f")")
-                                .font(.system(size: 45))
-                                .bold()
-                            Text(" KR").foregroundStyle(.secondaryText)
-                        }.font(.system(size: 35))
-                            .foregroundStyle(.primaryText)
-                    }
-                    .onAppear{
-                        focusedField = .amauntText
-                    }
-                    .onTapGesture {
-                        if focusedField == .amauntText{
-                            focusedField = nil
-                        } else {
-                            focusedField = . amauntText
-                        }
-                    }
-                    
-                    
-                    
-                    
-                    //Date
-                    HStack {
-                        VStack(alignment:.leading){
-                            Text("Date")
-                                .font(.caption2)
-                                .foregroundStyle(.secondaryText)
-                            Text("\(addExpenceSheetVM.checkDate())")
-                                .font(.caption)
+            VStack{
+                //Dismiss and Top text
+                ZStack{
+                    HStack{
+                        Button{
+                            dismiss()
+                        }label: {
+                            Image(systemName: "delete.left")
                                 .foregroundStyle(.primaryText)
                         }
                         Spacer()
-                        
-                        ZStack{
-                            Image(systemName: "calendar")
-                                .font(.title3)
-                            Image(systemName: "calendar")
-                                .font(.title3)
-                                .overlay{
-                                    DatePicker("", selection: $addExpenceSheetVM.date, in: ...Date(), displayedComponents: .date)
-                                }.blendMode(.destinationOver)
-                        }
-                        
-                    }.padding(7)
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 7)
-                                .stroke(Color.secondaryText)
-                        }
-                    
-                    
-                    
-                    //Transaction type (Inn or Our)
-                    Picker("Transaction Type", selection: $addExpenceSheetVM.transactionTypeSelected){
-                        ForEach(addExpenceSheetVM.transactionType, id:\.self){ type in
-                            Text(type)
-                        }
-                    }.pickerStyle(.segmented)
-                    
-                    
-                    
-                    //Transaction Class (Asset, Liability or Expence) and NeedLevel
-                    if addExpenceSheetVM.transactionTypeSelected != addExpenceSheetVM.transactionType[0]{
-                        Picker("Transaction Class", selection: $addExpenceSheetVM.transactionClassSelected){
-                            ForEach(addExpenceSheetVM.transactionClass, id:\.self){ Class in
-                                Text(Class)
-                            }
-                        }.pickerStyle(.segmented)
-                        
-                        //Need Level (Essential, Need or want)
-                        Picker("Need Level", selection: $addExpenceSheetVM.needLevelSelected){
-                            ForEach(addExpenceSheetVM.needLevel, id:\.self){ need in
-                                Text(need)
-                            }
-                        }.pickerStyle(.segmented)
                     }
+                    Text("New Transaction")
+                }.padding([.bottom, .horizontal])
                     
-                    //Category
-                    Button{
-                        addExpenceSheetVM.categorySheet.toggle()
-                    }label: {
+                
+                
+                
+                //Amount
+                ZStack{
+                    TextField("", value: $addExpenceSheetVM.amauntText, formatter: addExpenceSheetVM.numberFormatter)
+                        .focused($focusedField, equals: .amauntText)
+                        .keyboardType(.decimalPad)
+                        .opacity(0)
+                    
+                    HStack(alignment: .firstTextBaseline, spacing: 0){
+                        Text("\(addExpenceSheetVM.amauntText, specifier: "%.2f")")
+                            .font(.system(size: 45))
+                            .bold()
+                        Text(" KR").foregroundStyle(.secondaryText)
+                    }.font(.system(size: 35))
+                        .foregroundStyle(.primaryText)
+                }
+                .onAppear{
+                    focusedField = .amauntText
+                }
+                .onTapGesture {
+                    if focusedField == .amauntText{
+                        focusedField = nil
+                    } else {
+                        focusedField = . amauntText
+                    }
+                }
+            
+                
+                
+                
+                ZStack{
+                    VStack{
+                        //Date
+                        HStack {
+                            VStack(alignment:.leading){
+                                Text("Date")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondaryText)
+                                Text("\(addExpenceSheetVM.checkDate())")
+                                    .font(.caption)
+                                    .foregroundStyle(.primaryText)
+                            }
+                            Spacer()
+                            
+                            ZStack{
+                                Image(systemName: "calendar")
+                                    .font(.title3)
+                                Image(systemName: "calendar")
+                                    .font(.title3)
+                                    .overlay{
+                                        DatePicker("", selection: $addExpenceSheetVM.date, in: ...Date(), displayedComponents: .date)
+                                    }.blendMode(.destinationOver)
+                            }
+                            
+                        }.padding(7)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 7)
+                                    .stroke(Color.secondaryText)
+                            }
+                        
+                        //Transaction type (Inn or Our)
+                        Picker("Transaction Type", selection: $addExpenceSheetVM.transactionTypeSelected){
+                            ForEach(addExpenceSheetVM.transactionType, id:\.self){ type in
+                                Text(type)
+                            }
+                        }.pickerStyle(.segmented)
+                        
+                        //Transaction Class (Asset, Liability or Expence) and NeedLevel
+                        if addExpenceSheetVM.transactionTypeSelected != addExpenceSheetVM.transactionType[0]{
+                            Picker("Transaction Class", selection: $addExpenceSheetVM.transactionClassSelected){
+                                ForEach(addExpenceSheetVM.transactionClass, id:\.self){ Class in
+                                    Text(Class)
+                                }
+                            }.pickerStyle(.segmented)
+                            
+                            //Need Level (Essential, Need or want)
+                            Picker("Need Level", selection: $addExpenceSheetVM.needLevelSelected){
+                                ForEach(addExpenceSheetVM.needLevel, id:\.self){ need in
+                                    Text(need)
+                                }
+                            }.pickerStyle(.segmented)
+                        }
+                        
+                        //Category
+                        Button{
+                            addExpenceSheetVM.categorySheet.toggle()
+                        }label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 7)
+                                    .foregroundStyle(.secondaryText)
+                                    .frame(maxWidth: .infinity, maxHeight: 40)
+                                    .opacity(0.5)
+                                
+                                HStack{
+                                    Text(categories.isCategorySelected ? categories.categorySelected.categoryName : "Category")
+                                        .font(.caption)
+                                        .foregroundStyle(.primaryText)
+                                    Spacer()
+                                    Image(systemName: categories.isCategorySelected ? categories.categorySelected.icon : "rectangle.stack")
+                                        .foregroundColor(.primaryText)
+                                }.padding(10)
+                            }
+                        }
+                        
+                        // Description
                         ZStack{
                             RoundedRectangle(cornerRadius: 7)
                                 .foregroundStyle(.secondaryText)
@@ -136,53 +152,36 @@ struct addExpenceSheetView: View {
                                 .opacity(0.5)
                             
                             HStack{
-                                Text("Category")
+                                Text("Description")
                                     .font(.caption)
                                 Spacer()
-                                Image(systemName: "rectangle.stack")
+                                Image(systemName: "keyboard")
                             }.padding(10)
                         }
-                    }
-                    
-                    
-                    // Description
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 7)
-                            .foregroundStyle(.secondaryText)
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .opacity(0.5)
                         
-                        HStack{
-                            Text("Description")
-                                .font(.caption)
-                            Spacer()
-                            Image(systemName: "keyboard")
-                        }.padding(10)
-                    }
-                    
-                    //Recurring
-                    HStack(alignment: .top){
-                        VStack{
-                            Image(systemName: "calendar.badge.clock")
-                            
+                        //Recurring
+                        HStack(alignment: .top){
+                            VStack{
+                                Image(systemName: "calendar.badge.clock")
+                                
+                            }
+                            VStack(alignment:.leading){
+                                Text("Add as recuring")
+                                    .font(.caption)
+                                    .bold()
+                                Text("This transaction will be added again the following months on the same day as today")
+                                    .font(.caption2)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(3)
+                            }
+                            Toggle("", isOn: $addExpenceSheetVM.toggle).labelsHidden()
+                        }.padding(.top)
+                        
+                        Spacer()
+                        // Add Button
+                        Button{
+                            dismiss()
                         }
-                        VStack(alignment:.leading){
-                            Text("Add as recuring")
-                                .font(.caption)
-                                .bold()
-                            Text("This transaction will be added again the following months on the same day as today")
-                                .font(.caption2)
-                                .multilineTextAlignment(.leading)
-                                .lineLimit(3)
-                        }
-                        Toggle("", isOn: $addExpenceSheetVM.toggle).labelsHidden()
-                    }.padding(.top)
-                    
-                    Spacer()
-                    // Add Button
-                    Button{
-                        dismiss()
-                    }
                     label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)
@@ -193,13 +192,28 @@ struct addExpenceSheetView: View {
                             
                         }
                     }
-                    
-                }.padding()
-                .ignoresSafeArea(.keyboard)
-                .sheet(isPresented: $addExpenceSheetVM.categorySheet){
-                    categoriesView()
+                    }
+                    .padding([.bottom, .horizontal])
+                    if focusedField == .amauntText{
+                        Rectangle()
+                            .ignoresSafeArea(edges: .bottom)
+                            .background(.ultraThinMaterial)
+                            .opacity(0.6)
+                            .onTapGesture {
+                                focusedField = nil
+                                addExpenceSheetVM.categorySheet.toggle()
+                            }
+                    }
                 }
-        }
+                
+            }
+            
+            
+            if addExpenceSheetVM.categorySheet{
+                categoriesView(categories: categories, addExpenceSheetVM: addExpenceSheetVM)
+            }
+            
+        }.ignoresSafeArea(.keyboard)
     }
 }
 

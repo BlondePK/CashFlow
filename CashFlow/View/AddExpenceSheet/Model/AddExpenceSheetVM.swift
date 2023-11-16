@@ -25,6 +25,8 @@ class AddExpenceSheetVM: ObservableObject{
     @Published var toggle: Bool = false
     @Published var categorySheet: Bool = false 
     
+
+    
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
