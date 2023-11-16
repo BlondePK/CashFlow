@@ -16,6 +16,7 @@
 		3B11F87D2B04FA73000D6D6E /* Observed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11F87C2B04FA73000D6D6E /* Observed.swift */; };
 		3B4AF70B2B05040100039270 /* AddExpenceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4AF70A2B05040100039270 /* AddExpenceSheetView.swift */; };
 		3B4AF70D2B05040F00039270 /* AddExpenceSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4AF70C2B05040F00039270 /* AddExpenceSheetVM.swift */; };
+		3B98DDAE2B0681AA00871DB3 /* Categorys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B98DDAD2B0681AA00871DB3 /* Categorys.swift */; };
 		3BE24D402B0651CE0021231C /* AmountAsseet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE24D3F2B0651CE0021231C /* AmountAsseet.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		3B11F87C2B04FA73000D6D6E /* Observed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observed.swift; sourceTree = "<group>"; };
 		3B4AF70A2B05040100039270 /* AddExpenceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenceSheetView.swift; sourceTree = "<group>"; };
 		3B4AF70C2B05040F00039270 /* AddExpenceSheetVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenceSheetVM.swift; sourceTree = "<group>"; };
+		3B98DDAD2B0681AA00871DB3 /* Categorys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorys.swift; sourceTree = "<group>"; };
 		3BE24D3F2B0651CE0021231C /* AmountAsseet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountAsseet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,11 +112,20 @@
 		3B4AF7092B0503DF00039270 /* AddExpenceSheet */ = {
 			isa = PBXGroup;
 			children = (
+				3B98DDAC2B06819700871DB3 /* Model */,
 				3BE24D412B0651D40021231C /* Components */,
 				3B4AF70A2B05040100039270 /* AddExpenceSheetView.swift */,
 				3B4AF70C2B05040F00039270 /* AddExpenceSheetVM.swift */,
 			);
 			path = AddExpenceSheet;
+			sourceTree = "<group>";
+		};
+		3B98DDAC2B06819700871DB3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B98DDAD2B0681AA00871DB3 /* Categorys.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3BE24D412B0651D40021231C /* Components */ = {
@@ -200,6 +211,7 @@
 				3B11F8762B04EB6F000D6D6E /* ToolBarView.swift in Sources */,
 				3B11F86A2B04CA25000D6D6E /* ContentView.swift in Sources */,
 				3B11F8682B04CA25000D6D6E /* CashFlowApp.swift in Sources */,
+				3B98DDAE2B0681AA00871DB3 /* Categorys.swift in Sources */,
 				3B4AF70D2B05040F00039270 /* AddExpenceSheetVM.swift in Sources */,
 				3BE24D402B0651CE0021231C /* AmountAsseet.swift in Sources */,
 				3B4AF70B2B05040100039270 /* AddExpenceSheetView.swift in Sources */,

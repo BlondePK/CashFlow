@@ -47,6 +47,7 @@ class AddExpenceSheetVM: ObservableObject{
         
         let selectedDateString = String("\(selecteDay) " + "\(selecteMonth) " + "\(selecteYear)")
         let currentDateString = String("\(currentDay) " + "\(currentMonth) " + "\(currentYear)")
+
         
         if currentDateString == selectedDateString{
             return "Today"
