@@ -107,7 +107,6 @@
 			children = (
 				3B11F8692B04CA25000D6D6E /* ContentView.swift */,
 				3B4AF7092B0503DF00039270 /* AddExpenceSheet */,
-				3B91DA382B07F6F7006C8194 /* Categories */,
 				3B11F8782B04EB81000D6D6E /* ToolBar */,
 			);
 			path = View;
@@ -134,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				3B4AF70A2B05040100039270 /* AddExpenceSheetView.swift */,
+				3BE24D3F2B0651CE0021231C /* categoriesView.swift */,
 				3B91DA352B07F676006C8194 /* SubViews */,
 				3B98DDAC2B06819700871DB3 /* Model */,
 			);
@@ -157,27 +157,11 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		3B91DA382B07F6F7006C8194 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				3BE24D3F2B0651CE0021231C /* categoriesView.swift */,
-				3B91DA392B07F707006C8194 /* Model */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		3B91DA392B07F707006C8194 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3B98DDAD2B0681AA00871DB3 /* Categorys.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		3B98DDAC2B06819700871DB3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				3B4AF70C2B05040F00039270 /* AddExpenceSheetVM.swift */,
+				3B98DDAD2B0681AA00871DB3 /* Categorys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

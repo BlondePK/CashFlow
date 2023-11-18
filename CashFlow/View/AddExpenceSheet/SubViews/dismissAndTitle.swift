@@ -23,5 +23,10 @@ struct dismissAndTitle: View {
             }
             Text("New Transaction")
         }.padding([.bottom, .horizontal])
+            
     }
+}
+
+#Preview {
+    dismissAndTitle()
 }

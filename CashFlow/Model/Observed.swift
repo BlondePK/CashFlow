@@ -16,5 +16,13 @@ extension Font{
 }
 
 class Observed: ObservableObject{
+    //MARK: PUBLISHED VARIABLES
     @Published var addTransactionSheet: Bool = false
+    
+    
+    //MARK: FUNCTIONS
+    func smallHapticFeedBack(){
+        
+    }
+    
 }

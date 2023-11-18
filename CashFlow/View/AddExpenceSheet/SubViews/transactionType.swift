@@ -11,11 +11,13 @@ import SwiftUI
 struct transactionType: View {
     @ObservedObject var addExpenceSheetVM: AddExpenceSheetVM
     var body: some View {
-        Picker("Transaction Type", selection: $addExpenceSheetVM.transactionTypeSelected){
-            ForEach(addExpenceSheetVM.transactionType, id:\.self){ type in
-                Text(type)
-            }
-        }.pickerStyle(.segmented)
+        ZStack{
+            Picker("Transaction Type", selection: $addExpenceSheetVM.transactionTypeSelected){
+                ForEach(addExpenceSheetVM.transactionType, id:\.self){ type in
+                    Text(type)
+                }
+            }.pickerStyle(.segmented)
+        }
     }
 }
 

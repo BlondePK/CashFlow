@@ -11,7 +11,6 @@ import Foundation
 class AddExpenceSheetVM: ObservableObject{
     @Published var amauntText: Double? = 0.0
     
-    
     @Published var date: Date = Date()
     
     @Published var transactionType: [String] = ["Money Inn", "Money Out"]
@@ -25,6 +24,8 @@ class AddExpenceSheetVM: ObservableObject{
     
     @Published var toggle: Bool = false
     @Published var categorySheet: Bool = false 
+    
+    @Published var descriptionText: String = ""
     
 
     

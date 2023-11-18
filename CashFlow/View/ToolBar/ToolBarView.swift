@@ -10,6 +10,7 @@ import SwiftUI
 struct ToolBarView: View {
     @StateObject var toolBarViewModel = ToolBarViewModel()
     @ObservedObject var observed: Observed
+
     var body: some View {
         VStack{
             //DIVIDER
@@ -17,12 +18,10 @@ struct ToolBarView: View {
                 .frame(maxWidth: .infinity, maxHeight: 0.6)
                 .foregroundStyle(.secondaryText)
             
-            
             //TOOLBAR
             HStack{
                 ForEach(toolBarViewModel.Icons, id:\.self){ icon in
                     Button{
-                        
                         if icon != "plus"{
                             toolBarViewModel.SelectView(icon)
                         }else{
@@ -49,7 +48,9 @@ struct ToolBarView: View {
                 }
                 
             }.padding(.horizontal)
-        }
+        }.sensoryFeedback(.selection, trigger: toolBarViewModel.selectedView)
+            
+            
         
     }
     
