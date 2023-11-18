@@ -11,7 +11,6 @@ import SwiftUI
 struct addExpenceSheetView: View {
     @StateObject var addExpenceSheetVM = AddExpenceSheetVM()
     @StateObject var categories = Categorys()
-    
     @Environment(\.dismiss) var dismiss
     
     enum FocusedField{
@@ -25,23 +24,9 @@ struct addExpenceSheetView: View {
             
             VStack{
                 //Dismiss and Top text
-                ZStack{
-                    HStack{
-                        Button{
-                            dismiss()
-                        }label: {
-                            Image(systemName: "delete.left")
-                                .foregroundStyle(.primaryText)
-                        }
-                        Spacer()
-                    }
-                    Text("New Transaction")
-                }.padding([.bottom, .horizontal])
-                    
+                dismissAndTitle()
                 
-                
-                
-                //Amount
+                //Amount -- Need to find a way to extract this view to sub view
                 ZStack{
                     TextField("", value: $addExpenceSheetVM.amauntText, format: .number)
                         .focused($focusedField, equals: .amauntText)
@@ -50,7 +35,7 @@ struct addExpenceSheetView: View {
                     
                     HStack(alignment: .firstTextBaseline, spacing: 0){
                         Text("\(addExpenceSheetVM.amauntText ?? 0, specifier: "%.2f")")
-                            .font(.system(size: 45))
+                            .font(.system(size: focusedField == .amauntText ? 55 : 45))
                             .bold()
                         Text(" KR").foregroundStyle(.secondaryText)
                     }.font(.system(size: 35))
@@ -67,137 +52,39 @@ struct addExpenceSheetView: View {
                         focusedField = . amauntText
                     }
                 }
-            
-                
-                
                 
                 ZStack{
                     VStack{
                         //Date
-                        HStack {
-                            VStack(alignment:.leading){
-                                Text("Date")
-                                    .font(.caption2)
-                                    .foregroundStyle(.secondaryText)
-                                Text("\(addExpenceSheetVM.checkDate())")
-                                    .font(.caption)
-                                    .foregroundStyle(.primaryText)
-                            }
-                            Spacer()
-                            
-                            ZStack{
-                                Image(systemName: "calendar")
-                                    .font(.title3)
-                                Image(systemName: "calendar")
-                                    .font(.title3)
-                                    .overlay{
-                                        DatePicker("", selection: $addExpenceSheetVM.date, in: ...Date(), displayedComponents: .date)
-                                    }.blendMode(.destinationOver)
-                            }
-                            
-                        }.padding(7)
-                            .overlay{
-                                RoundedRectangle(cornerRadius: 7)
-                                    .stroke(Color.secondaryText)
-                            }
+                        dateComponent(addExpenceSheetVM: addExpenceSheetVM)
                         
                         //Transaction type (Inn or Our)
-                        Picker("Transaction Type", selection: $addExpenceSheetVM.transactionTypeSelected){
-                            ForEach(addExpenceSheetVM.transactionType, id:\.self){ type in
-                                Text(type)
-                            }
-                        }.pickerStyle(.segmented)
+                        transactionType(addExpenceSheetVM: addExpenceSheetVM)
                         
                         //Transaction Class (Asset, Liability or Expence) and NeedLevel
                         if addExpenceSheetVM.transactionTypeSelected != addExpenceSheetVM.transactionType[0]{
-                            Picker("Transaction Class", selection: $addExpenceSheetVM.transactionClassSelected){
-                                ForEach(addExpenceSheetVM.transactionClass, id:\.self){ Class in
-                                    Text(Class)
-                                }
-                            }.pickerStyle(.segmented)
+                            
+                            transactionClass(addExpenceSheetVM: addExpenceSheetVM)
                             
                             //Need Level (Essential, Need or want)
-                            Picker("Need Level", selection: $addExpenceSheetVM.needLevelSelected){
-                                ForEach(addExpenceSheetVM.needLevel, id:\.self){ need in
-                                    Text(need)
-                                }
-                            }.pickerStyle(.segmented)
+                            needLevel(addExpenceSheetVM: addExpenceSheetVM)
                         }
                         
                         //Category
-                        Button{
-                            categories.AllCatgegories = []
-                            addExpenceSheetVM.categorySheet.toggle()
-                        }label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 7)
-                                    .foregroundStyle(.secondaryText)
-                                    .frame(maxWidth: .infinity, maxHeight: 40)
-                                    .opacity(0.5)
-                                
-                                HStack{
-                                    Text(categories.isCategorySelected ? categories.categorySelected.categoryName : "Category")
-                                        .font(.caption)
-                                        .foregroundStyle(.primaryText)
-                                    Spacer()
-                                    Image(systemName: categories.isCategorySelected ? categories.categorySelected.icon : "rectangle.stack")
-                                        .foregroundColor(.primaryText)
-                                }.padding(10)
-                            }
-                        }
+                        categorie(addExpenceSheetVM: addExpenceSheetVM, categories: categories)
                         
                         // Description
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 7)
-                                .foregroundStyle(.secondaryText)
-                                .frame(maxWidth: .infinity, maxHeight: 40)
-                                .opacity(0.5)
-                            
-                            HStack{
-                                Text("Description")
-                                    .font(.caption)
-                                Spacer()
-                                Image(systemName: "keyboard")
-                            }.padding(10)
-                        }
+                        description(addExpenceSheetVM: addExpenceSheetVM)
                         
                         //Recurring
-                        HStack(alignment: .top){
-                            VStack{
-                                Image(systemName: "calendar.badge.clock")
-                                
-                            }
-                            VStack(alignment:.leading){
-                                Text("Add as recuring")
-                                    .font(.caption)
-                                    .bold()
-                                Text("This transaction will be added again the following months on the same day as today")
-                                    .font(.caption2)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(3)
-                            }
-                            Toggle("", isOn: $addExpenceSheetVM.toggle).labelsHidden()
-                        }.padding(.top)
+                        recuring(addExpenceSheetVM: addExpenceSheetVM)
                         
                         Spacer()
                         
-                        
                         // Add Button
-                        Button{
-                            dismiss()
-                        }
-                    label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 15)
-                                .foregroundStyle(.primaryGreen)
-                                .frame(maxWidth: .infinity, maxHeight: 50)
-                            Text("Add Transaction")
-                                .foregroundStyle(Color.secondaryGreen)
-                            
-                        }
-                    }
-                    }
-                    .padding([.bottom, .horizontal])
+                        addButton(dismiss: _dismiss)
+                        
+                    }.padding([.bottom, .horizontal])
                     if focusedField == .amauntText{
                         Rectangle()
                             .ignoresSafeArea(edges: .bottom)
@@ -215,7 +102,6 @@ struct addExpenceSheetView: View {
                 
             }
             
-            
             if addExpenceSheetVM.categorySheet{
                 categoriesView(categories: categories, addExpenceSheetVM: addExpenceSheetVM)
             }
@@ -227,3 +113,5 @@ struct addExpenceSheetView: View {
 #Preview {
     addExpenceSheetView(addExpenceSheetVM: AddExpenceSheetVM(), categories: Categorys())
 }
+
+

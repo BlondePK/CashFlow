@@ -16,6 +16,16 @@
 		3B11F87D2B04FA73000D6D6E /* Observed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11F87C2B04FA73000D6D6E /* Observed.swift */; };
 		3B4AF70B2B05040100039270 /* AddExpenceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4AF70A2B05040100039270 /* AddExpenceSheetView.swift */; };
 		3B4AF70D2B05040F00039270 /* AddExpenceSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4AF70C2B05040F00039270 /* AddExpenceSheetVM.swift */; };
+		3B91DA372B07F690006C8194 /* dismissAndTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA362B07F690006C8194 /* dismissAndTitle.swift */; };
+		3B91DA3B2B08E90B006C8194 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA3A2B08E90B006C8194 /* Date.swift */; };
+		3B91DA3D2B08EDAA006C8194 /* transactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA3C2B08EDAA006C8194 /* transactionType.swift */; };
+		3B91DA3F2B08EE22006C8194 /* transactionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA3E2B08EE22006C8194 /* transactionClass.swift */; };
+		3B91DA412B08EE5D006C8194 /* needLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA402B08EE5D006C8194 /* needLevel.swift */; };
+		3B91DA432B08EEB9006C8194 /* categorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA422B08EEB9006C8194 /* categorie.swift */; };
+		3B91DA452B08EF33006C8194 /* description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA442B08EF33006C8194 /* description.swift */; };
+		3B91DA472B08EF63006C8194 /* recuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA462B08EF63006C8194 /* recuring.swift */; };
+		3B91DA492B08EFC3006C8194 /* addButtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA482B08EFC3006C8194 /* addButtom.swift */; };
+		3B91DA4B2B08F062006C8194 /* amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91DA4A2B08F062006C8194 /* amount.swift */; };
 		3B98DDAE2B0681AA00871DB3 /* Categorys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B98DDAD2B0681AA00871DB3 /* Categorys.swift */; };
 		3BE24D402B0651CE0021231C /* categoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE24D3F2B0651CE0021231C /* categoriesView.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +41,16 @@
 		3B11F87C2B04FA73000D6D6E /* Observed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observed.swift; sourceTree = "<group>"; };
 		3B4AF70A2B05040100039270 /* AddExpenceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenceSheetView.swift; sourceTree = "<group>"; };
 		3B4AF70C2B05040F00039270 /* AddExpenceSheetVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenceSheetVM.swift; sourceTree = "<group>"; };
+		3B91DA362B07F690006C8194 /* dismissAndTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissAndTitle.swift; sourceTree = "<group>"; };
+		3B91DA3A2B08E90B006C8194 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		3B91DA3C2B08EDAA006C8194 /* transactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionType.swift; sourceTree = "<group>"; };
+		3B91DA3E2B08EE22006C8194 /* transactionClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionClass.swift; sourceTree = "<group>"; };
+		3B91DA402B08EE5D006C8194 /* needLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = needLevel.swift; sourceTree = "<group>"; };
+		3B91DA422B08EEB9006C8194 /* categorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categorie.swift; sourceTree = "<group>"; };
+		3B91DA442B08EF33006C8194 /* description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = description.swift; sourceTree = "<group>"; };
+		3B91DA462B08EF63006C8194 /* recuring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recuring.swift; sourceTree = "<group>"; };
+		3B91DA482B08EFC3006C8194 /* addButtom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addButtom.swift; sourceTree = "<group>"; };
+		3B91DA4A2B08F062006C8194 /* amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = amount.swift; sourceTree = "<group>"; };
 		3B98DDAD2B0681AA00871DB3 /* Categorys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorys.swift; sourceTree = "<group>"; };
 		3BE24D3F2B0651CE0021231C /* categoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoriesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +107,7 @@
 			children = (
 				3B11F8692B04CA25000D6D6E /* ContentView.swift */,
 				3B4AF7092B0503DF00039270 /* AddExpenceSheet */,
+				3B91DA382B07F6F7006C8194 /* Categories */,
 				3B11F8782B04EB81000D6D6E /* ToolBar */,
 			);
 			path = View;
@@ -112,18 +133,51 @@
 		3B4AF7092B0503DF00039270 /* AddExpenceSheet */ = {
 			isa = PBXGroup;
 			children = (
-				3B98DDAC2B06819700871DB3 /* Model */,
 				3B4AF70A2B05040100039270 /* AddExpenceSheetView.swift */,
-				3BE24D3F2B0651CE0021231C /* categoriesView.swift */,
+				3B91DA352B07F676006C8194 /* SubViews */,
+				3B98DDAC2B06819700871DB3 /* Model */,
 			);
 			path = AddExpenceSheet;
+			sourceTree = "<group>";
+		};
+		3B91DA352B07F676006C8194 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				3B91DA362B07F690006C8194 /* dismissAndTitle.swift */,
+				3B91DA4A2B08F062006C8194 /* amount.swift */,
+				3B91DA3A2B08E90B006C8194 /* Date.swift */,
+				3B91DA3C2B08EDAA006C8194 /* transactionType.swift */,
+				3B91DA3E2B08EE22006C8194 /* transactionClass.swift */,
+				3B91DA402B08EE5D006C8194 /* needLevel.swift */,
+				3B91DA422B08EEB9006C8194 /* categorie.swift */,
+				3B91DA442B08EF33006C8194 /* description.swift */,
+				3B91DA462B08EF63006C8194 /* recuring.swift */,
+				3B91DA482B08EFC3006C8194 /* addButtom.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		3B91DA382B07F6F7006C8194 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3BE24D3F2B0651CE0021231C /* categoriesView.swift */,
+				3B91DA392B07F707006C8194 /* Model */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		3B91DA392B07F707006C8194 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B98DDAD2B0681AA00871DB3 /* Categorys.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3B98DDAC2B06819700871DB3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				3B4AF70C2B05040F00039270 /* AddExpenceSheetVM.swift */,
-				3B98DDAD2B0681AA00871DB3 /* Categorys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,13 +252,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B91DA452B08EF33006C8194 /* description.swift in Sources */,
+				3B91DA4B2B08F062006C8194 /* amount.swift in Sources */,
 				3B11F87A2B04EBA5000D6D6E /* ToolBarViewModel.swift in Sources */,
 				3B11F87D2B04FA73000D6D6E /* Observed.swift in Sources */,
+				3B91DA412B08EE5D006C8194 /* needLevel.swift in Sources */,
+				3B91DA492B08EFC3006C8194 /* addButtom.swift in Sources */,
 				3B11F8762B04EB6F000D6D6E /* ToolBarView.swift in Sources */,
 				3B11F86A2B04CA25000D6D6E /* ContentView.swift in Sources */,
+				3B91DA3D2B08EDAA006C8194 /* transactionType.swift in Sources */,
 				3B11F8682B04CA25000D6D6E /* CashFlowApp.swift in Sources */,
 				3B98DDAE2B0681AA00871DB3 /* Categorys.swift in Sources */,
 				3B4AF70D2B05040F00039270 /* AddExpenceSheetVM.swift in Sources */,
+				3B91DA372B07F690006C8194 /* dismissAndTitle.swift in Sources */,
+				3B91DA432B08EEB9006C8194 /* categorie.swift in Sources */,
+				3B91DA3B2B08E90B006C8194 /* Date.swift in Sources */,
+				3B91DA3F2B08EE22006C8194 /* transactionClass.swift in Sources */,
+				3B91DA472B08EF63006C8194 /* recuring.swift in Sources */,
 				3BE24D402B0651CE0021231C /* categoriesView.swift in Sources */,
 				3B4AF70B2B05040100039270 /* AddExpenceSheetView.swift in Sources */,
 			);

@@ -22,6 +22,7 @@ struct ToolBarView: View {
             HStack{
                 ForEach(toolBarViewModel.Icons, id:\.self){ icon in
                     Button{
+                        
                         if icon != "plus"{
                             toolBarViewModel.SelectView(icon)
                         }else{
