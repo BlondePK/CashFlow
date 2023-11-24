@@ -55,14 +55,22 @@ struct categoriesView: View {
                                     .font(.subheadline)
                                 Spacer()
                             }.padding(.top,10)
+                            
                             Divider().padding(.vertical,10)
+                            
                             
                             LazyVGrid(columns: columns, alignment: .center, spacing: 25){
                                 ForEach(0..<subCat.count, id: \.self){ s in
+                                    
                                     Button{
-                                        //Button action--
+                                        //Button action-->
                                         categories.categorySelected = subCat[s]
                                         categories.isCategorySelected = true
+                                        setClass(categories.categorySelected)
+                                        if !categories.categorySelected.subCategoryArray!.isEmpty{
+                                            categories.expandView.toggle()
+                                            return
+                                        }
                                         addExpenceSheetVM.categorySheet.toggle()
                                         
                                         
@@ -80,7 +88,13 @@ struct categoriesView: View {
                                             Text(subCat[s].categoryName)
                                                 .font(.caption2)
                                                 .foregroundStyle(Color.primaryText)
-                                                
+                                             
+                                            
+                                            if categories.expandView{
+                                                if categories.categorySelected.id == subCat[s].id{
+                                                    Text("Hello")
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -96,9 +110,24 @@ struct categoriesView: View {
         }
         .onAppear{
             if categories.AllCatgegories.isEmpty{
+                //MARK: Combining all Categories
                 categories.combineAllCategories()
+                
             }
         }.ignoresSafeArea(edges: .bottom)
+        
+    }
+    
+    func setClass(_ catSelected: category){
+        let cat = catSelected
+        
+        if cat.asset{
+            addExpenceSheetVM.transactionClassSelected = addExpenceSheetVM.transactionClass[0]
+        }else if cat.liability{
+            addExpenceSheetVM.transactionClassSelected = addExpenceSheetVM.transactionClass[1]
+            
+        }
+        
         
     }
 }

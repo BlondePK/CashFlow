@@ -7,10 +7,14 @@
 
 
 import SwiftUI
+import SwiftData
 
 struct addExpenceSheetView: View {
-    @StateObject var addExpenceSheetVM = AddExpenceSheetVM()
-    @StateObject var categories = Categorys()
+    @Environment(\.modelContext) var transactionData
+    @Query var transactions: [Transaction]
+    
+    @ObservedObject var addExpenceSheetVM: AddExpenceSheetVM
+    @ObservedObject var categories: Categorys
     @Environment(\.dismiss) var dismiss
     
     enum FocusedField{
@@ -54,24 +58,35 @@ struct addExpenceSheetView: View {
                 }
                 
                 ZStack{
-                    VStack{
+                    VStack(spacing:5){
                         //Date
                         dateComponent(addExpenceSheetVM: addExpenceSheetVM)
                         
-                        //Transaction type (Inn or Our)
+                        //MARK: Transaction type (Inn or Our)
+                        // if inn, then class and needLevel is not a option
                         transactionType(addExpenceSheetVM: addExpenceSheetVM)
                         
-                        //Transaction Class (Asset, Liability or Expence) and NeedLevel
+                        //MARK: Transaction Class (Asset, Liability or Expence) and NeedLevel
+                        // if Asset or Liability, then NeedLevel is not a option
                         if addExpenceSheetVM.transactionTypeSelected != addExpenceSheetVM.transactionType[0]{
                             
                             transactionClass(addExpenceSheetVM: addExpenceSheetVM)
                             
-                            //Need Level (Essential, Need or want)
-                            needLevel(addExpenceSheetVM: addExpenceSheetVM)
+                            // Need Level (Essential, Need or want)
+                            if addExpenceSheetVM.transactionClassSelected == addExpenceSheetVM.transactionClass[2]{
+                                needLevel(addExpenceSheetVM: addExpenceSheetVM)
+                            }
                         }
+                        
+                        //Add New Asset/Liability Button
+                        newAssetOrLiabilityButton(addExpenceSheetVM: addExpenceSheetVM, categories: categories)
                         
                         //Category
                         categorie(addExpenceSheetVM: addExpenceSheetVM, categories: categories)
+                        
+                        //Sub Category /
+                        //MARK: we need a list like category, with all asset/liabilities inside a cat.
+                        //MARK: if u select subscriptions, then u select witch subscriptino.
                         
                         // Description
                         description(addExpenceSheetVM: addExpenceSheetVM)
@@ -82,7 +97,7 @@ struct addExpenceSheetView: View {
                         Spacer()
                         
                         // Add Button
-                        addButton(dismiss: _dismiss)
+                        addButton(dismiss: _dismiss, addExpenceSheetVM: addExpenceSheetVM, categories: categories)
                         
                     }.padding([.bottom, .horizontal])
                     if focusedField == .amauntText{
@@ -108,6 +123,9 @@ struct addExpenceSheetView: View {
             
         }.ignoresSafeArea(.keyboard)
     }
+    
+    
+    
 }
 
 #Preview {

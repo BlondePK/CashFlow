@@ -27,6 +27,8 @@ class AddExpenceSheetVM: ObservableObject{
     
     @Published var descriptionText: String = ""
     
+    @Published var recurring: Bool = false 
+    
 
     
     let numberFormatter: NumberFormatter = {

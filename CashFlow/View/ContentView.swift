@@ -6,18 +6,34 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @StateObject var observed = Observed()
-    
+    @StateObject var toolBarModel = ToolBarViewModel()
+    @StateObject var addExpenceSheetVM = AddExpenceSheetVM()
+    @StateObject var categories = Categorys()
+    @Environment(\.modelContext) var TransactionData
+    @Query var transactions: [Transaction]
     
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea(.all)
+            
+            //Views
+            if toolBarModel.selectedView == "house"{
+                // Home View
+            }else if toolBarModel.selectedView == "clock.arrow.circlepath"{
+                historyView(observed: observed, addExpenceSheetVM: addExpenceSheetVM, categories: categories)
+            }else if toolBarModel.selectedView == "chart.line.uptrend.xyaxis"{
+                //
+            }else if toolBarModel.selectedView == "person"{
+                //profil View
+            }
+                
             
             VStack{
                 Spacer()
-                ToolBarView(observed: observed)
+                ToolBarView(toolBarViewModel: toolBarModel, observed: observed)
             }
             
         }.fullScreenCover(isPresented: $observed.addTransactionSheet){
@@ -27,5 +43,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(observed: Observed())
+    ContentView(observed: Observed(), toolBarModel: ToolBarViewModel())
 }

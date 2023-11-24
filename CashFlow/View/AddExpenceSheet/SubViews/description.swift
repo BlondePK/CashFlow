@@ -10,6 +10,7 @@ import SwiftUI
 
 struct description: View {
     @ObservedObject var addExpenceSheetVM: AddExpenceSheetVM
+    @State private var descriptionButton: Bool = false
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 7)
@@ -17,12 +18,26 @@ struct description: View {
                 .frame(maxWidth: .infinity, maxHeight: 40)
                 .opacity(0.5)
             
-            HStack{
-                Text("Description")
-                    .font(.caption)
-                Spacer()
-                Image(systemName: "keyboard")
-            }.padding(10)
+            ZStack{
+                TextField("Description", text: $addExpenceSheetVM.descriptionText)
+                    .keyboardType(.default)
+                   
+                
+//                Button{
+//                    descriptionButton.toggle()
+//                }
+//            label: {
+//                    HStack{
+//                        Text("Descriprion")
+//                            .font(.caption)
+//                        Spacer()
+//                        Image(systemName: "keyboard")
+//                    }.padding(10)
+//                        .foregroundStyle(.primaryText)
+//                        .opacity(descriptionButton == true ? 0 : 1)
+//                    
+//                }
+            }
         }
     }
 }

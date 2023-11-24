@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CashFlowApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(observed: Observed())
-        }
+            ContentView()
+        }.modelContainer(for: Transaction.self)
     }
 }
